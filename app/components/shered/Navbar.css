@@ -1,0 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+.navLogoStyle {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+    
+ 
+}
+.navLogoGlow{
+ text-shadow: 
+    0 0 1px #ffa500,
+    0 0 3px #ffa500,
+    0 0 5px #ff7f00,
+    0 0 7px #ff7f00,
+    0 0 10px #ff4500;   
+}
