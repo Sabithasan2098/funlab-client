@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-// import ThemeToggle from "../theme/ThemeMode";
 import Link from "next/link";
-// import { ThemeToggle } from "../theme/ThemeMode";
 import "./Navbar.css";
 import NavDropdown from "./sheredBtns/NavDropDownBtn";
+import { IoSearch } from "react-icons/io5";
 
 const Navbar = () => {
   // drawer------------>
@@ -131,7 +130,16 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end">
-          <p>No Theme</p>
+          <input
+            type="text"
+            name="search"
+            id=""
+            placeholder="Search..."
+            className="bg-[#272727]  px-4 pr-8 py-2 rounded-sm relative w-80 focus:outline-none focus:ring-0"
+          />
+          <button className=" absolute top-8 right-4 cursor-pointer">
+            <IoSearch size={20} />
+          </button>
         </div>
       </div>
 
