@@ -1,10 +1,21 @@
-import TopMovies from "./components/home/topMovies/TopMovies";
+import type { Metadata } from "next";
+import { getAllData, getTopFive } from "./api/getData";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Funlab | Home",
+  description: "Video sharing platform",
+};
+
+export default async function Home() {
+  const allData = await getAllData();
+  const topFive = await getTopFive();
+
+  console.log(allData);
+  console.log(topFive);
+
   return (
     <div>
-      <TopMovies />
-      <div></div>
+      <div> hello</div>
     </div>
   );
 }

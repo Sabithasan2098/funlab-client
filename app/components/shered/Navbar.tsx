@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./Navbar.css";
 import NavDropdown from "./sheredBtns/NavDropDownBtn";
 import { IoSearch } from "react-icons/io5";
+import CustomLink from "../custom/CustomLink";
 
 const Navbar = () => {
   // drawer------------>
@@ -23,7 +24,7 @@ const Navbar = () => {
         <NavDropdown
           title="Movies"
           items={[
-            { text: "Sub Button 1", href: "#" },
+            { text: "Movies", href: "/movies" },
             { text: "Sub Button 2", href: "#" },
             { text: "Sub Button 3", href: "#" },
             { text: "Sub Button 4", href: "#" },
@@ -47,22 +48,26 @@ const Navbar = () => {
     <>
       <div>
         <li>
-          <Link href="#" onClick={closeDrawer} className="text-lg py-4">
+          <CustomLink path="/" onClick={closeDrawer} className="text-lg my-4">
             Home
-          </Link>
+          </CustomLink>
         </li>
         <li>
-          <Link href="#" onClick={closeDrawer} className="text-lg py-4">
+          <CustomLink
+            path="/movies"
+            onClick={closeDrawer}
+            className="text-lg my-4"
+          >
             Movies
-          </Link>
+          </CustomLink>
         </li>
         <li>
-          <Link href="#" onClick={closeDrawer} className="text-lg py-4">
+          <Link href="#" onClick={closeDrawer} className="text-lg my-4">
             TV Shows
           </Link>
         </li>
         <li>
-          <Link href="#" onClick={closeDrawer} className="text-lg py-4">
+          <Link href="#" onClick={closeDrawer} className="text-lg my-4">
             About
           </Link>
         </li>
@@ -126,7 +131,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="navbar-start hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{desktopNav}</ul>
+          <ul className="menu menu-horizontal px-1 ">{desktopNav}</ul>
         </div>
 
         <div className="navbar-end hidden md:flex">

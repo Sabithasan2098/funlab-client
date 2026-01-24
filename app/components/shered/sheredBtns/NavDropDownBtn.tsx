@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { useState, useRef } from "react";
+import CustomLink from "../../custom/CustomLink";
 
 type NavDropdownProps = {
   title: string;
@@ -46,14 +46,14 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ title, items }) => {
         `}
       >
         {items.map((item, index) => (
-          <Link
+          <CustomLink
             key={index}
-            href={item.href}
-            className="hover:text-blue-400 transition-colors duration-200 p-2 rounded  block text-center text-sm"
+            path={item.href}
+            className="hover:text-blue-400 transition-colors duration-200 p-2 rounded  block  text-sm"
             onClick={() => setIsOpen(false)} // click on dropdown item closes it
           >
             {item.text}
-          </Link>
+          </CustomLink>
         ))}
       </div>
     </div>

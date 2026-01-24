@@ -1,4 +1,4 @@
-const data = [
+export const movieDataJson = [
   {
     id: "1",
     name: "avengers",
@@ -460,5 +460,3 @@ const data = [
     ],
   },
 ];
-
-export default { data };

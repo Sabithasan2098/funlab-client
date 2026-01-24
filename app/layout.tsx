@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/shered/Navbar";
@@ -13,11 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Funlab",
-  description: "Video sharing platform",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen bg-[#152121] text-white`}
       >
         <Navbar />
-        <div className="max-w-7xl mx-auto">{children}</div>
+        <div className="max-w-7xl mx-auto h-screen bg-[#0f1110] px-6 py-4">
+          {children}
+        </div>
       </body>
     </html>
   );
