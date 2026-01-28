@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen bg-[#152121] text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[#152121] text-white`}
       >
         <Navbar />
-        <div className="max-w-7xl mx-auto h-screen bg-[#0f1110] px-6 py-4">
+        <div className="max-w-7xl mx-auto min-h-screen bg-[#0f1110] px-6 py-4">
           {children}
         </div>
       </body>

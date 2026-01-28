@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getAllData, getTopFive } from "./api/getData";
+import { getAllData } from "./api/getData";
+import TopFiveMovie from "./components/home/TopFiveMovie";
 
 export const metadata: Metadata = {
   title: "Funlab | Home",
@@ -8,14 +9,10 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const allData = await getAllData();
-  const topFive = await getTopFive();
-
-  console.log(allData);
-  console.log(topFive);
 
   return (
     <div>
-      <div> hello</div>
+      <TopFiveMovie />
     </div>
   );
 }
