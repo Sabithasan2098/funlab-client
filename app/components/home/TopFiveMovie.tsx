@@ -6,6 +6,10 @@ const TopFiveMovie = async () => {
   console.log(data);
   return (
     <div>
+      <div className="flex gap-3 items-center pb-2">
+        <p className="bg-red-700 px-0.5 py-2.5"></p>
+        <p className="text-[18px] font-semibold">Top Rated</p>
+      </div>
       <TopFiveMovieSlider data={data} />
     </div>
   );

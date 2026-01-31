@@ -16,7 +16,7 @@ const TopFiveCard = ({
         width={600}
         className="h-[150px] md:h-[200px] w-[700]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
       <div className="absolute bottom-2 w-full px-3">
         <h2>{name}</h2>
         <div className="flex justify-between items-center w-full">
