@@ -3,7 +3,6 @@ import TopFiveMovieSlider from "./TopFiveMovieSlider";
 
 const TopFiveMovie = async () => {
   const data = await getTopFive();
-  console.log(data);
   return (
     <div>
       <div className="flex gap-3 items-center pb-2">

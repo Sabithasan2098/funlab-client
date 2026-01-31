@@ -4,37 +4,36 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
-
-import TopFiveCard from "../../shered/cards/TopFiveCard";
-import { TopFiveCardTypes } from "@/types/cardTypes";
+import { FeaturedCardType } from "@/types/cardTypes";
+import FeaturedCard from "../../shered/cards/FeaturedCard";
 
 type Props = {
-  data: TopFiveCardTypes[];
+  data: FeaturedCardType[];
 };
 
-const TopFiveMovieSlider = ({ data }: Props) => {
+const FeaturedMovieSlider = ({ data }: Props) => {
   return (
     <Swiper
-      slidesPerView={3}
+      slidesPerView={7}
       spaceBetween={20}
-      //   pagination={{ clickable: true }}
       autoplay={{
         delay: 2000,
         disableOnInteraction: false,
       }}
       modules={[Autoplay]}
       breakpoints={{
-        0: { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
+        0: { slidesPerView: 3 },
+        768: { slidesPerView: 5 },
+        1024: { slidesPerView: 7 },
       }}
     >
       {data.map((movie) => (
         <SwiperSlide key={movie.name}>
-          <TopFiveCard {...movie} />
+          <FeaturedCard {...movie} />
         </SwiperSlide>
       ))}
     </Swiper>
   );
 };
-export default TopFiveMovieSlider;
+
+export default FeaturedMovieSlider;

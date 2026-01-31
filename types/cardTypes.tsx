@@ -4,3 +4,10 @@ export type TopFiveCardTypes = {
   releaseYear: string;
   category: string;
 };
+
+export type FeaturedCardType = {
+  name: string;
+  thumbnail: string;
+  imdbRating: number;
+  releaseYear: string;
+};
