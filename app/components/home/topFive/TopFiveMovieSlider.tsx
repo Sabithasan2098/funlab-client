@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 
-import TopFiveCard from "../shered/topFive/TopFiveCard";
+import TopFiveCard from "../../shered/topFive/TopFiveCard";
 import { TopFiveCardTypes } from "@/types/cardTypes";
 
 type Props = {
