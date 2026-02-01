@@ -1,12 +1,15 @@
-import { FeaturedCardType } from "@/types/cardTypes";
-import { MdOutlineStarPurple500 } from "react-icons/md";
+import { CardType } from "@/types/cardTypes";
 import Image from "next/image";
-const FeaturedCard = ({
+import { MdOutlineStarPurple500 } from "react-icons/md";
+
+const MovieCard = ({
+  name,
   thumbnail,
   imdbRating,
-  name,
   releaseYear,
-}: FeaturedCardType) => {
+  language,
+  dualAudio,
+}: CardType) => {
   return (
     <div>
       <div className="relative ">
@@ -23,7 +26,7 @@ const FeaturedCard = ({
           <p className="text-[12px]">{imdbRating}</p>
         </div>
         <p className="absolute uppercase bg-red-700 top-0 left-0 text-[11px] font-semibold px-1 py-px">
-          featured
+          {dualAudio === false ? language : "Dual Audio"}
         </p>
       </div>
       <h2 className="text-[14px] truncate">{name}</h2>
@@ -32,4 +35,4 @@ const FeaturedCard = ({
   );
 };
 
-export default FeaturedCard;
+export default MovieCard;

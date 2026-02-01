@@ -18,7 +18,7 @@ const TopFiveCard = ({
       />
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
       <div className="absolute bottom-2 w-full px-3">
-        <h2>{name}</h2>
+        <h2 className="truncate">{name}</h2>
         <div className="flex justify-between items-center w-full">
           <h3>{releaseYear}</h3>
           <p className="bg-red-700 px-1.5 py-0.5 text-[12px] uppercase">

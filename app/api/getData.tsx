@@ -2,7 +2,9 @@ import { FeaturedCardType, TopFiveCardTypes } from "@/types/cardTypes";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const getAllData = async () => {
-  const res = await fetch("http://localhost:5000/api/v1/videos/getVideos");
+  const res = await fetch("http://localhost:5000/api/v1/videos/getVideos", {
+    next: { revalidate: 60 },
+  });
   const data = await res.json();
   return data.data;
 };

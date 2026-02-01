@@ -11,3 +11,12 @@ export type FeaturedCardType = {
   imdbRating: number;
   releaseYear: string;
 };
+
+export type CardType = {
+  name: string;
+  thumbnail: string;
+  imdbRating: number;
+  releaseYear: string;
+  language: string;
+  dualAudio: boolean;
+};

@@ -16,8 +16,10 @@ const FeaturedMovieSlider = ({ data }: Props) => {
     <Swiper
       slidesPerView={7}
       spaceBetween={20}
+      speed={1000}
+      loop={true}
       autoplay={{
-        delay: 2000,
+        delay: 3000,
         disableOnInteraction: false,
       }}
       modules={[Autoplay]}

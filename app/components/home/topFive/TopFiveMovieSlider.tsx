@@ -17,9 +17,11 @@ const TopFiveMovieSlider = ({ data }: Props) => {
     <Swiper
       slidesPerView={3}
       spaceBetween={20}
+      speed={1000}
+      loop={true}
       //   pagination={{ clickable: true }}
       autoplay={{
-        delay: 2000,
+        delay: 2500,
         disableOnInteraction: false,
       }}
       modules={[Autoplay]}

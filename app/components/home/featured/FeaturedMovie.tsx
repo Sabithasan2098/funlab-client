@@ -5,10 +5,10 @@ const FeaturedMovie = async () => {
   const data = await getFeatured();
   //   console.log({ data });
   return (
-    <div className="pt-5">
-      <div className="flex gap-3 items-center pb-2">
-        <p className="bg-red-700 px-0.5 py-2.5"></p>
-        <p className="text-[18px] font-semibold">Featured</p>
+    <div className="md:pt-10 pt-5">
+      <div className="flex gap-3 items-center md:pb-5 pb-3">
+        <p className="bg-red-700 px-0.5 md:py-4 py-3"></p>
+        <p className="md:text-[20px] text-[18px] font-semibold">Featured</p>
       </div>
       <FeaturedMovieSlider data={data} />
     </div>
