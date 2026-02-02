@@ -1,6 +1,6 @@
 import React from "react";
 
-const Movies = () => {
+const Movies = async () => {
   return <div>It is my movie page</div>;
 };
 

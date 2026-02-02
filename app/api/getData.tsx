@@ -1,4 +1,8 @@
-import { FeaturedCardType, TopFiveCardTypes } from "@/types/cardTypes";
+import {
+  FeaturedCardType,
+  TopFiveCardTypes,
+  TVideoData,
+} from "@/types/cardTypes";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const getAllData = async () => {
@@ -25,4 +29,29 @@ export const getFeatured = async (): Promise<FeaturedCardType[]> => {
     .filter((item: any) => item.genres.includes("adult"))
     .slice(0, 20);
   return featured;
+};
+
+export const getData = async (id: string): Promise<TVideoData> => {
+  const res = await fetch(
+    `http://localhost:5000/api/v1/videos/getVideo/${id}`,
+    {
+      next: { revalidate: 60 }, // ISR
+    },
+  );
+
+  // check if fetch was successful
+  if (!res.ok) {
+    throw new Error(
+      `Failed to fetch video with id ${id}, status: ${res.status}`,
+    );
+  }
+
+  const data = await res.json();
+
+  // check backend response structure
+  if (!data.data) {
+    throw new Error("API did not return 'data' property");
+  }
+
+  return data.data;
 };
