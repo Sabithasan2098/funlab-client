@@ -3,7 +3,6 @@ import FeaturedMovieSlider from "./FeaturedMovieSlider";
 
 const FeaturedMovie = async () => {
   const data = await getFeatured();
-  //   console.log({ data });
   return (
     <div className="md:pt-10 pt-5">
       <div className="flex gap-3 items-center md:pb-5 pb-3">

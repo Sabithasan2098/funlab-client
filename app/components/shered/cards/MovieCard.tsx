@@ -21,7 +21,7 @@ const MovieCard = ({
             alt="movie thumbnail"
             height={400}
             width={600}
-            className="md:h-[220px] h-[135px] w-[190px]"
+            className="md:h-[220px] h-[150px] w-[190px]"
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
           <div className="absolute bottom-1 right-1 w-full flex gap-0.5 items-center justify-end">

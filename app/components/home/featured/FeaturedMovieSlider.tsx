@@ -4,11 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
-import { FeaturedCardType } from "@/types/cardTypes";
+import { FeaturedCardSlideType } from "@/types/cardTypes";
 import FeaturedCard from "../../shered/cards/FeaturedCard";
 
 type Props = {
-  data: FeaturedCardType[];
+  data: FeaturedCardSlideType[];
 };
 
 const FeaturedMovieSlider = ({ data }: Props) => {
@@ -30,8 +30,14 @@ const FeaturedMovieSlider = ({ data }: Props) => {
       }}
     >
       {data.map((movie) => (
-        <SwiperSlide key={movie.name}>
-          <FeaturedCard {...movie} />
+        <SwiperSlide key={movie._id}>
+          <FeaturedCard
+            id={movie._id}
+            name={movie.name}
+            imdbRating={movie.imdbRating}
+            releaseYear={movie.releaseYear}
+            thumbnail={movie.thumbnail}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
