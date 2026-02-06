@@ -4,6 +4,7 @@ import MovieCard from "../../shered/cards/MovieCard";
 const Movie = async () => {
   const allData = await getAllData();
   const slicedData = allData.slice(0, 70);
+  console.log(allData);
   return (
     <div className="md:pt-10 pt-5">
       <div className="flex gap-3 items-center md:pb-5 pb-3">
@@ -17,14 +18,14 @@ const Movie = async () => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           slicedData.map((data: any) => (
             <MovieCard
-              key={data.name}
+              key={data.id}
               name={data.name}
               thumbnail={data.thumbnail}
               imdbRating={data.imdbRating}
               releaseYear={data.releaseYear}
               language={data.language}
               dualAudio={data.dualAudio}
-              id={data._id}
+              id={data.id}
             ></MovieCard>
           ))
         }

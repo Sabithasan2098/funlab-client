@@ -5,23 +5,9 @@ export type TopFiveCardTypes = {
   releaseYear: string;
   category: string;
 };
-export type TopFiveCardSliderTypes = {
-  _id?: string;
-  name: string;
-  banner: string;
-  releaseYear: string;
-  category: string;
-};
 
 export type FeaturedCardType = {
   id?: string;
-  name: string;
-  thumbnail: string;
-  imdbRating: number;
-  releaseYear: string;
-};
-export type FeaturedCardSlideType = {
-  _id?: string;
   name: string;
   thumbnail: string;
   imdbRating: number;
@@ -50,7 +36,7 @@ export type TVideo = {
 };
 
 export type TVideoData = {
-  _id?: string;
+  id: string;
 
   name: string;
   fullName: string;

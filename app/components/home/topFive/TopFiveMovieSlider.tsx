@@ -6,10 +6,10 @@ import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 
 import TopFiveCard from "../../shered/cards/TopFiveCard";
-import { TopFiveCardSliderTypes } from "@/types/cardTypes";
+import { TopFiveCardTypes } from "@/types/cardTypes";
 
 type Props = {
-  data: TopFiveCardSliderTypes[];
+  data: TopFiveCardTypes[];
 };
 
 const TopFiveMovieSlider = ({ data }: Props) => {
@@ -32,9 +32,9 @@ const TopFiveMovieSlider = ({ data }: Props) => {
       }}
     >
       {data.map((movie) => (
-        <SwiperSlide key={movie.name}>
+        <SwiperSlide key={movie.id}>
           <TopFiveCard
-            id={movie._id}
+            id={movie.id}
             name={movie.name}
             banner={movie.banner}
             releaseYear={movie.releaseYear}
