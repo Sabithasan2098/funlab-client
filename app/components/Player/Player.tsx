@@ -136,8 +136,8 @@ export default function MoviePlayer({ banner, name, sources }: Props) {
               }}
               className="absolute inset-0 flex items-center justify-center cursor-pointer"
             >
-              <div className="bg-red-600 hover:bg-red-700 transition p-6 rounded-full">
-                <VscDebugStart size={50} className="text-white" />
+              <div className="bg-red-600 hover:bg-red-700 transition w-12 h-12 md:w-16 md:h-16 lg:w-24 lg:h-24 rounded-full flex items-center justify-center">
+                <VscDebugStart className="text-white text-[18px] md:text-[35px] lg:text-[50px]" />
               </div>
             </button>
           </>

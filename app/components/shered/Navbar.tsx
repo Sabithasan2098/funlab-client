@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import "./Navbar.css";
-import NavDropdown from "./sheredBtns/NavDropDownBtn";
 import { IoSearch } from "react-icons/io5";
 import CustomLink from "../custom/CustomLink";
 
@@ -21,26 +20,39 @@ const Navbar = () => {
   const desktopNav = (
     <>
       <li>
-        <NavDropdown
-          title="Movies"
-          items={[
-            { text: "Movies", href: "/movies" },
-            { text: "Sub Button 2", href: "#" },
-            { text: "Sub Button 3", href: "#" },
-            { text: "Sub Button 4", href: "#" },
-          ]}
-        />
+        <CustomLink path="/hollywood" className="text-sm hover:text-blue-500">
+          HollyWood
+        </CustomLink>
       </li>
       <li>
-        <NavDropdown
-          title="Movies"
-          items={[
-            { text: "Sub Button 1", href: "#" },
-            { text: "Sub Button 2", href: "#" },
-            { text: "Sub Button 3", href: "#" },
-            { text: "Sub Button 4", href: "#" },
-          ]}
-        />
+        <CustomLink path="/bollywood" className="text-sm hover:text-blue-500">
+          BollyWood
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink path="/chinese" className="text-sm hover:text-blue-500">
+          Chinese
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink path="/japanese" className="text-sm hover:text-blue-500">
+          Japanese
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink path="/korean" className="text-sm hover:text-blue-500">
+          Korean
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink path="/turkish" className="text-sm hover:text-blue-500">
+          Turkish
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink path="/series" className="text-sm hover:text-blue-500">
+          Series Movies
+        </CustomLink>
       </li>
     </>
   );
@@ -82,7 +94,7 @@ const Navbar = () => {
         <div className="navbar-start">
           {/* Mobile Hamburger/X Button */}
           <button
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost xl:hidden"
             onClick={toggleDrawer}
             aria-label="Toggle menu"
           >
@@ -130,8 +142,10 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="navbar-start hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 ">{desktopNav}</ul>
+        <div className="navbar-start hidden xl:flex">
+          <ul className="menu menu-horizontal px-1 min-w-[600px]">
+            {desktopNav}
+          </ul>
         </div>
 
         <div className="navbar-end hidden md:flex">
@@ -142,7 +156,7 @@ const Navbar = () => {
             placeholder="Search..."
             className="bg-[#272727]  px-4 pr-8 py-2 rounded-sm relative w-80 focus:outline-none focus:ring-0 "
           />
-          <button className=" absolute top-8 right-4 cursor-pointer">
+          <button className=" absolute top-[22px] right-4 cursor-pointer">
             <IoSearch size={20} />
           </button>
         </div>
@@ -154,7 +168,7 @@ const Navbar = () => {
         className={`
           fixed inset-0  z-50 transform transition-transform duration-300 ease-in-out
           ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:hidden
+          xl:hidden w-72 md:w-80 lg:w-96
         `}
       >
         {/* Drawer Content */}
@@ -187,7 +201,7 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          <div className="relative">
+          <div className="relative w-60 flex md:hidden">
             <input
               type="text"
               name=""
@@ -195,7 +209,10 @@ const Navbar = () => {
               className="bg-gray-500 mb-2 w-60 px-4 py-1 rounded-md focus:outline-none focus:ring-0"
               placeholder="Search..."
             />
-            <button className=" absolute top-2 right-24 cursor-pointer">
+            <button
+              className=" absolute top-2 right-2 cursor-pointer"
+              onClick={closeDrawer}
+            >
               <IoSearch size={16} />
             </button>
           </div>
@@ -215,7 +232,7 @@ const Navbar = () => {
       {/* Overlay */}
       {isDrawerOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 xl:hidden w-72 md:w-80 lg:w-[400px]"
           onClick={closeDrawer}
         />
       )}
