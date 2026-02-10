@@ -5,6 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import CustomLink from "../custom/CustomLink";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -15,40 +16,74 @@ const Navbar = () => {
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
   const closeDrawer = () => setIsDrawerOpen(false);
 
+  // search---------------------------------->
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!query.trim()) return;
+
+    router.push(`/search?q=${query}`);
+    setQuery("");
+  };
+
   const Nav = (
     <>
       <li>
-        <CustomLink path="/hollywood" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/hollywood"
+          className="text-sm font-bold hover:text-blue-500"
+        >
           HollyWood
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/bollywood" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/bollywood"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           BollyWood
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/chinese" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/chinese"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           Chinese
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/japanese" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/japanese"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           Japanese
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/korean" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/korean"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           Korean
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/turkish" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/turkish"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           Turkish
         </CustomLink>
       </li>
       <li>
-        <CustomLink path="/series" className="text-sm hover:text-blue-500">
+        <CustomLink
+          path="/movieSeries"
+          className="text-sm font-semibold hover:text-blue-500"
+        >
           Series Movies
         </CustomLink>
       </li>
@@ -73,15 +108,32 @@ const Navbar = () => {
           </Link>
 
           {/* Center Search */}
-          <div className="relative w-[550px]">
-            <input
-              type="text"
-              placeholder="Search movies..."
-              className="w-full bg-[#272727] px-4 py-2 rounded-md focus:outline-none"
-            />
-            <button className="absolute top-2 right-3">
-              <IoSearch size={20} />
-            </button>
+          <div className="relative w-[550px] ">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSearch(e);
+                closeDrawer(); // drawer বন্ধ হবে
+              }}
+            >
+              <input
+                type="text"
+                name="search"
+                placeholder="Search..."
+                autoComplete="off"
+                spellCheck="false"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="bg-[#272727] px-4 pr-10 py-2 rounded-sm w-full focus:outline-none"
+              />
+
+              <button
+                type="submit"
+                className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
+              >
+                <IoSearch size={20} />
+              </button>
+            </form>
           </div>
 
           {/* Right Fancy Placeholder */}
@@ -155,20 +207,35 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="navbar-start hidden xl:flex">
-              <ul className="menu menu-horizontal px-1 min-w-[600px]">{Nav}</ul>
+              <ul className="menu menu-horizontal px-1 min-w-[620px]">{Nav}</ul>
             </div>
 
-            <div className="navbar-end hidden md:flex">
-              <input
-                type="text"
-                name="search"
-                id=""
-                placeholder="Search..."
-                className="bg-[#272727]  px-4 pr-8 py-2 rounded-sm relative w-80 focus:outline-none focus:ring-0 "
-              />
-              <button className=" absolute top-[22px] right-4 cursor-pointer">
-                <IoSearch size={20} />
-              </button>
+            <div className="navbar-end relative hidden md:flex">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch(e);
+                  closeDrawer(); // drawer বন্ধ হবে
+                }}
+              >
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search..."
+                  autoComplete="off"
+                  spellCheck="false"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  className="bg-[#272727] px-4 pr-10 py-2 rounded-sm w-80 focus:outline-none"
+                />
+
+                <button
+                  type="submit"
+                  className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
+                >
+                  <IoSearch size={20} />
+                </button>
+              </form>
             </div>
           </div>
 
@@ -211,22 +278,33 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
-              <div className="relative w-60 flex md:hidden">
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch(e);
+                  closeDrawer(); // drawer বন্ধ হবে
+                }}
+                className="relative w-60 flex md:hidden"
+              >
                 <input
                   type="text"
-                  name=""
-                  id=""
-                  className="bg-gray-500 mb-2 w-60 px-4 py-1 rounded-md focus:outline-none focus:ring-0"
+                  name="search"
                   placeholder="Search..."
+                  autoComplete="off"
+                  spellCheck="false"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  className="bg-[#272727] px-4 pr-10 py-2 rounded-sm w-80 focus:outline-none"
                 />
-                <button
-                  className=" absolute top-2 right-2 cursor-pointer"
-                  onClick={closeDrawer}
-                >
-                  <IoSearch size={16} />
-                </button>
-              </div>
 
+                <button
+                  type="submit"
+                  className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
+                >
+                  <IoSearch size={20} />
+                </button>
+              </form>
               {/* Navigation Links */}
               <ul className="space-y-2 flex-1">{Nav}</ul>
 
