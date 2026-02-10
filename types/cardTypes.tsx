@@ -70,3 +70,40 @@ export type TVideoData = {
   createdAt?: string;
   updatedAt?: string;
 };
+export type TRelatedVideoData = {
+  data: {
+    id: string;
+
+    name: string;
+    fullName: string;
+    description?: string;
+
+    industry?: string;
+    category: string;
+    genres: string[];
+
+    releaseYear?: number;
+    language?: string[];
+
+    video: TVideo;
+
+    thumbnail: string;
+    banner: string;
+    screenshots?: string[];
+
+    imdbRating?: number;
+
+    tv: boolean;
+    comic: boolean;
+    dualAudio: boolean;
+    hindiDubbed: boolean;
+    web: boolean;
+    oscar: boolean;
+
+    views?: number;
+    isPublished?: boolean;
+
+    createdAt?: string;
+    updatedAt?: string;
+  };
+};

@@ -1,4 +1,4 @@
-import { getData } from "@/app/api/getData";
+import { getData, getRelated } from "@/app/api/getData";
 import MoviePlayer from "@/app/components/Player/Player";
 import { Metadata } from "next";
 
@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const page = async ({ params }: Props) => {
   const { id } = await params;
   const data = await getData(id);
+  console.log({ data: data.id });
+  const related = await getRelated(data.id);
+  console.log({ related: related });
 
   return (
     <div className="flex flex-col lg:flex-row bg-[#0f1110] min-h-screen">
@@ -42,6 +45,7 @@ const page = async ({ params }: Props) => {
       {/* Related Videos Section */}
       <div className="lg:w-1/3 w-full px-4 lg:px-5 pt-5">
         <h1 className="text-white">Related Videos Here...</h1>
+        <p className="text-white">{related.length}</p>
       </div>
     </div>
   );

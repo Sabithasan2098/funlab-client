@@ -4,7 +4,7 @@ import MovieCard from "../../shered/cards/MovieCard";
 const Movie = async () => {
   const allData = await getAllData();
   const slicedData = allData.slice(0, 70);
-  console.log(allData);
+  // console.log(allData);
   return (
     <div className="md:pt-10 pt-5">
       <div className="flex gap-3 items-center md:pb-5 pb-3">

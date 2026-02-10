@@ -1,6 +1,7 @@
 import {
   FeaturedCardType,
   TopFiveCardTypes,
+  TRelatedVideoData,
   TVideoData,
 } from "@/types/cardTypes";
 
@@ -29,6 +30,17 @@ export const getFeatured = async (): Promise<FeaturedCardType[]> => {
     .filter((item: any) => item.genres.includes("adult"))
     .slice(0, 20);
   return featured;
+};
+
+export const getRelated = async (id: string): Promise<TRelatedVideoData[]> => {
+  const related = await fetch(
+    `http://localhost:5000/api/v1/videos/video/${id}/related`,
+    {
+      next: { revalidate: 60 },
+    },
+  );
+  const data = await related.json();
+  return data.data;
 };
 
 export const getData = async (id: string): Promise<TVideoData> => {
