@@ -15,6 +15,7 @@ export type FeaturedCardType = {
 };
 
 export type CardType = {
+  _id?: string;
   id: string;
   name: string;
   thumbnail: string;

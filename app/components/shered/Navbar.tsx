@@ -33,48 +33,48 @@ const Navbar = () => {
     <>
       <li>
         <CustomLink
-          path="/hollywood"
-          className="text-sm font-bold hover:text-blue-500"
+          path="/industry/hollywood"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           HollyWood
         </CustomLink>
       </li>
       <li>
         <CustomLink
-          path="/bollywood"
-          className="text-sm font-semibold hover:text-blue-500"
+          path="/industry/bollywood"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           BollyWood
         </CustomLink>
       </li>
       <li>
         <CustomLink
-          path="/chinese"
-          className="text-sm font-semibold hover:text-blue-500"
+          path="/industry/chinese"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           Chinese
         </CustomLink>
       </li>
       <li>
         <CustomLink
-          path="/japanese"
-          className="text-sm font-semibold hover:text-blue-500"
+          path="/industry/japanese"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           Japanese
         </CustomLink>
       </li>
       <li>
         <CustomLink
-          path="/korean"
-          className="text-sm font-semibold hover:text-blue-500"
+          path="/industry/korean"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           Korean
         </CustomLink>
       </li>
       <li>
         <CustomLink
-          path="/turkish"
-          className="text-sm font-semibold hover:text-blue-500"
+          path="/industry/turkish"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           Turkish
         </CustomLink>
@@ -82,7 +82,7 @@ const Navbar = () => {
       <li>
         <CustomLink
           path="/movieSeries"
-          className="text-sm font-semibold hover:text-blue-500"
+          className="text-sm font-semibold hover:text-[#FFA500]"
         >
           Series Movies
         </CustomLink>
@@ -131,7 +131,7 @@ const Navbar = () => {
                 type="submit"
                 className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
               >
-                <IoSearch size={20} />
+                <IoSearch size={20} className="text-[#FF8C00]" />
               </button>
             </form>
           </div>
@@ -207,7 +207,9 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="navbar-start hidden xl:flex">
-              <ul className="menu menu-horizontal px-1 min-w-[620px]">{Nav}</ul>
+              <ul className="menu menu-horizontal min-w-[620px] gap-0 ">
+                {Nav}
+              </ul>
             </div>
 
             <div className="navbar-end relative hidden md:flex">
@@ -233,7 +235,7 @@ const Navbar = () => {
                   type="submit"
                   className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
                 >
-                  <IoSearch size={20} />
+                  <IoSearch size={20} className="text-[#FF8C00]" />
                 </button>
               </form>
             </div>
@@ -302,7 +304,7 @@ const Navbar = () => {
                   type="submit"
                   className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
                 >
-                  <IoSearch size={20} />
+                  <IoSearch size={20} className="text-[#FF8C00]" />
                 </button>
               </form>
               {/* Navigation Links */}

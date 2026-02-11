@@ -25,7 +25,7 @@ const CustomLink = ({
       <Link
         href={path}
         onClick={onClick}
-        className={`${className} ${active ? "text-blue-400" : ""}`}
+        className={`${className} ${active ? "text-[#FF8C00]" : ""}`}
       >
         {children}
       </Link>
