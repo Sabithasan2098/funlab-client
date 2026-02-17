@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { IoSearch } from "react-icons/io5";
+import { RxCross2 } from "react-icons/rx";
 import CustomLink from "../custom/CustomLink";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
@@ -28,6 +29,9 @@ const Navbar = () => {
     router.push(`/search?q=${query}`);
     setQuery("");
   };
+
+  // navbar drawer--------------------------->
+  const [open, setOpen] = useState(false);
 
   const Nav = (
     <>
@@ -131,7 +135,7 @@ const Navbar = () => {
                 type="submit"
                 className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
               >
-                <IoSearch size={20} className="text-[#FF8C00]" />
+                <IoSearch size={20} className="text-white" />
               </button>
             </form>
           </div>
@@ -203,6 +207,17 @@ const Navbar = () => {
                 FUNLAB
                 <span className="text-white navLogoGlow">.entertainment</span>
               </Link>
+              {/* onclick the search icon open search input */}
+
+              <div className="absolute right-5 top-[22px] md:hidden">
+                <button onClick={() => setOpen(!open)}>
+                  {open ? (
+                    <RxCross2 className="scale-130 drop-shadow-2xl text-red-500 size-5" />
+                  ) : (
+                    <IoSearch size={20} className="text-white" />
+                  )}
+                </button>
+              </div>
             </div>
 
             {/* Desktop Menu */}
@@ -212,7 +227,7 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <div className="navbar-end relative hidden md:flex">
+            <div className="navbar-end relative hidden md:flex md:right-6 xl:right-0">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -235,7 +250,7 @@ const Navbar = () => {
                   type="submit"
                   className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
                 >
-                  <IoSearch size={20} className="text-[#FF8C00]" />
+                  <IoSearch size={20} className="text-white" />
                 </button>
               </form>
             </div>
@@ -281,32 +296,6 @@ const Navbar = () => {
                 </svg>
               </button>
 
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSearch(e);
-                  closeDrawer(); // drawer বন্ধ হবে
-                }}
-                className="relative w-60 flex md:hidden"
-              >
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="Search..."
-                  autoComplete="off"
-                  spellCheck="false"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="bg-[#272727] px-4 pr-10 py-2 rounded-sm w-80 focus:outline-none"
-                />
-
-                <button
-                  type="submit"
-                  className="absolute top-2 right-0  cursor-pointer w-10 flex items-center justify-center"
-                >
-                  <IoSearch size={20} className="text-[#FF8C00]" />
-                </button>
-              </form>
               {/* Navigation Links */}
               <ul className="space-y-2 flex-1">{Nav}</ul>
 
@@ -327,6 +316,40 @@ const Navbar = () => {
             />
           )}
         </div>
+      </div>
+
+      {/* search icon drawer content */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? "max-h-24" : "max-h-0"
+        }`}
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearch(e);
+            closeDrawer(); // drawer বন্ধ হবে
+          }}
+          className="relative w-full flex md:hidden "
+        >
+          <input
+            type="text"
+            name="search"
+            placeholder="Search..."
+            autoComplete="off"
+            spellCheck="false"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="bg-[#272727] px-4 pr-10 py-2 w-full focus:outline-none"
+          />
+
+          <button
+            type="submit"
+            className="absolute top-2 right-2  cursor-pointer w-10 flex items-center justify-center"
+          >
+            <IoSearch size={20} className="text-white" />
+          </button>
+        </form>
       </div>
     </div>
   );
