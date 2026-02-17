@@ -10,14 +10,7 @@ const page = async ({ searchParams }: SearchPageProps) => {
   const query = params.q || "";
   const data = (await searchData(query)) || [];
   const movies = data;
-  console.log({ movies });
-
-  // const res = await fetch(
-  //   `http://localhost:5000/api/v1/seriesVideos/getSingleVideoOnSearch?search=${query}`,
-  // );
-
-  // const data = await res.json();
-  // const movies = data.data.data;
+  // console.log({ movies });
 
   return (
     <div className="min-h-screen bg-[#152121] text-white ">
@@ -29,7 +22,7 @@ const page = async ({ searchParams }: SearchPageProps) => {
             <>
               <div className="flex gap-2 pb-5 ">
                 <p className="bg-red-700 px-0.5 "></p>
-                <h1 className="text-white text-lg leading-5">
+                <h1 className="text-white text-sm lg:text-lg leading-4 lg:leading-5">
                   Result Found : {query}
                 </h1>
               </div>
@@ -41,6 +34,9 @@ const page = async ({ searchParams }: SearchPageProps) => {
                     id={data.id}
                     name={data.name}
                     description={data.description}
+                    imdbRating={data.imdbRating}
+                    industry={data.industry}
+                    releaseYear={data.releaseYear}
                     key={data.id}
                   />
                 ))}
