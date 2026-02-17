@@ -78,21 +78,16 @@ export type TRelatedVideoData = {
   fullName: string;
   description?: string;
 
-  industry?: string;
-  category: string;
-  genres: string[];
-
-  releaseYear?: number;
-  language?: string[];
-
   banner: string;
+};
 
+export type TSearchData = {
+  id: string;
+  name: string;
+  fullName: string;
+  description?: string;
+  industry?: string;
+  banner: string;
+  releaseYear?: number;
   imdbRating?: number;
-
-  tv: boolean;
-  comic: boolean;
-  dualAudio: boolean;
-  hindiDubbed: boolean;
-
-  views?: number;
 };

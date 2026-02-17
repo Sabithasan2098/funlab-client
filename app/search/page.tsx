@@ -1,26 +1,53 @@
+import { searchData } from "../api/getData";
+import SearchCard from "../components/shered/cards/SearchCard";
+
 type SearchPageProps = {
   searchParams: Promise<{ q?: string }>;
 };
 
 const page = async ({ searchParams }: SearchPageProps) => {
   const params = await searchParams;
-  const query = params.q;
+  const query = params.q || "";
+  const data = (await searchData(query)) || [];
+  const movies = data;
+  console.log({ movies });
 
-  const res = await fetch(
-    `http://localhost:5000/api/v1/seriesVideos/getSingleVideoOnSearch?search=${query}`,
-  );
+  // const res = await fetch(
+  //   `http://localhost:5000/api/v1/seriesVideos/getSingleVideoOnSearch?search=${query}`,
+  // );
 
-  const data = await res.json();
-  const movies = data.data.data;
+  // const data = await res.json();
+  // const movies = data.data.data;
 
   return (
-    <div className="min-h-screen bg-[#152121] text-white">
-      <div className="max-w-7xl mx-auto min-h-screen bg-[#0f1110] md:px-6 px-4 md:py-4 py-2">
-        {!movies.length ? (
-          <h1>Sorry no video avilable</h1>
-        ) : (
-          <h1>{movies.length}</h1>
-        )}
+    <div className="min-h-screen bg-[#152121] text-white ">
+      <div className="max-w-7xl mx-auto min-h-screen bg-[#0f1110] xl:pt-20 md:px-6 px-4 md:py-4 py-2">
+        <div className="max-w-5xl mx-auto">
+          {movies?.length === 0 ? (
+            <h1>Sorry no video avilable</h1>
+          ) : (
+            <>
+              <div className="flex gap-2 pb-5 ">
+                <p className="bg-red-700 px-0.5 "></p>
+                <h1 className="text-white text-lg leading-5">
+                  Result Found : {query}
+                </h1>
+              </div>
+              <div className="flex flex-col gap-5">
+                {movies.map((data) => (
+                  <SearchCard
+                    banner={data.banner}
+                    fullName={data.fullName}
+                    id={data.id}
+                    name={data.name}
+                    description={data.description}
+                    key={data.id}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

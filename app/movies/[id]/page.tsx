@@ -54,21 +54,10 @@ const page = async ({ params }: Props) => {
             <RelatedCard
               key={data.id}
               id={data.id}
-              dualAudio={data.dualAudio}
-              imdbRating={data.imdbRating}
-              language={data.language}
-              releaseYear={data.releaseYear}
               banner={data.banner}
-              category={data.category}
-              comic
               fullName={data.fullName}
               name={data.name}
-              genres={data.genres}
-              hindiDubbed
-              tv
               description={data.description}
-              industry={data.industry}
-              views={data.views}
             />
           ))}
         </div>

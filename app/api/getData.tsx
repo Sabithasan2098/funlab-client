@@ -2,10 +2,12 @@ import {
   FeaturedCardType,
   TopFiveCardTypes,
   TRelatedVideoData,
+  TSearchData,
   TVideoData,
 } from "@/types/cardTypes";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// get all data-------------------------->
 export const getAllData = async () => {
   const res = await fetch("http://localhost:5000/api/v1/videos/getVideos", {
     next: { revalidate: 60 },
@@ -14,6 +16,7 @@ export const getAllData = async () => {
   return data.data;
 };
 
+// get top five data---------------------->
 export const getTopFive = async (): Promise<TopFiveCardTypes[]> => {
   const allData = await getAllData();
   // console.log(allData);
@@ -24,6 +27,7 @@ export const getTopFive = async (): Promise<TopFiveCardTypes[]> => {
   return topFive;
 };
 
+// get featured data----------------------->
 export const getFeatured = async (): Promise<FeaturedCardType[]> => {
   const allData = await getAllData();
   const featured = allData
@@ -32,6 +36,7 @@ export const getFeatured = async (): Promise<FeaturedCardType[]> => {
   return featured;
 };
 
+// get related data------------------------>
 export const getRelated = async (id: string): Promise<TRelatedVideoData[]> => {
   const related = await fetch(
     `http://localhost:5000/api/v1/videos/video/${id}/related`,
@@ -43,6 +48,7 @@ export const getRelated = async (id: string): Promise<TRelatedVideoData[]> => {
   return data.data;
 };
 
+// get video by id------------------------->
 export const getData = async (id: string): Promise<TVideoData> => {
   const res = await fetch(
     `http://localhost:5000/api/v1/videos/getVideo/${id}`,
@@ -66,4 +72,16 @@ export const getData = async (id: string): Promise<TVideoData> => {
   }
 
   return data.data;
+};
+
+// search data--------------------------->
+export const searchData = async (query: string): Promise<TSearchData[]> => {
+  const res = await fetch(
+    `http://localhost:5000/api/v1/seriesVideos/getSingleVideoOnSearch?search=${query}`,
+    {
+      next: { revalidate: 60 },
+    },
+  );
+  const data = await res.json();
+  return data?.data?.data || [];
 };
