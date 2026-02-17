@@ -2,7 +2,8 @@ export type TopFiveCardTypes = {
   id?: string;
   name: string;
   banner: string;
-  releaseYear: string;
+  releaseYear: number;
+  imdbRating?: number;
   category: string;
 };
 
@@ -11,7 +12,7 @@ export type FeaturedCardType = {
   name: string;
   thumbnail: string;
   imdbRating: number;
-  releaseYear: string;
+  releaseYear: number;
 };
 
 export type CardType = {
@@ -20,8 +21,8 @@ export type CardType = {
   name: string;
   thumbnail: string;
   imdbRating: number;
-  releaseYear: string;
-  language: string;
+  releaseYear: number;
+  language: string[];
   dualAudio: boolean;
 };
 
@@ -72,39 +73,26 @@ export type TVideoData = {
   updatedAt?: string;
 };
 export type TRelatedVideoData = {
-  data: {
-    id: string;
+  id: string;
+  name: string;
+  fullName: string;
+  description?: string;
 
-    name: string;
-    fullName: string;
-    description?: string;
+  industry?: string;
+  category: string;
+  genres: string[];
 
-    industry?: string;
-    category: string;
-    genres: string[];
+  releaseYear?: number;
+  language?: string[];
 
-    releaseYear?: number;
-    language?: string[];
+  banner: string;
 
-    video: TVideo;
+  imdbRating?: number;
 
-    thumbnail: string;
-    banner: string;
-    screenshots?: string[];
+  tv: boolean;
+  comic: boolean;
+  dualAudio: boolean;
+  hindiDubbed: boolean;
 
-    imdbRating?: number;
-
-    tv: boolean;
-    comic: boolean;
-    dualAudio: boolean;
-    hindiDubbed: boolean;
-    web: boolean;
-    oscar: boolean;
-
-    views?: number;
-    isPublished?: boolean;
-
-    createdAt?: string;
-    updatedAt?: string;
-  };
+  views?: number;
 };
